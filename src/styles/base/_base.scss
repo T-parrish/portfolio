@@ -1,0 +1,26 @@
+// set global font size to 62.5% so rem becomes base 10
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-size: $m-size;
+    color: $dark-grey;
+    line-height: 1.6;
+    background: $off-white;
+    font-family: $main-font;
+}
+
+.is-active {
+    color: blueviolet;
+    font-weight: bold;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
