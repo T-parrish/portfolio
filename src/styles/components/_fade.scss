@@ -1,0 +1,39 @@
+.fade--top {
+    animation-name: fade-top;
+    animation-duration: 2s;
+    animation-timing-function: cubic-bezier(.13,.68,.27,1.43);
+}
+
+
+.fade--in {
+    animation-name: fade-in;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+}
+
+.fade--page__title {
+    animation: fade-in;
+    animation-duration: 2.5s;
+    animation-timing-function: ease-in;
+}
+
+
+@keyframes fade-top {
+    0% {
+        opacity: 0%;
+        transform: translateY(-100%);
+    }
+    100% {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
