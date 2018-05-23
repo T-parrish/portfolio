@@ -1,8 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import Header from './Header';
 import Typist from 'react-typist';
 import { Link } from 'react-router-dom'; 
+import { Wavy } from '../components/Wavy';
 
 export const HomePage = () => (
     <div>
@@ -19,17 +18,9 @@ export const HomePage = () => (
                             <span>Welcome to my Portfolio!</span> 
                     </Typist>
                 </h1>
-                <Link to="/dashboard"><button className="button_two fade--button__main"> Who? </button></Link>
+                <Link to="/dashboard"><button className="button_two"> Who? </button></Link>
             </div>
         </div>
-        <div className="wave-container">
-            <div className="wave--one"></div>
-            <div className="wave--two"></div>
-            <div className="wave--three"></div>
-            <div className="wave--four"></div>
-            <div className="wave--five"></div>
-            <div className="wave--six"></div>
-            <div className="wave--seven"></div>
-        </div>
+        <Wavy />
     </div>
 );

@@ -7,8 +7,10 @@ import PageNotFound from '../components/PageNotFound.js';
 import LoginPage from '../components/LoginPage.js';
 import PrivateRoute from './PrivateRoute.js';
 import PublicRoute from './PublicRoute.js';
-import {HomePage} from '../components/HomePage';
+import { HomePage } from '../components/HomePage';
+import { PortfolioPage } from '../components/PortfolioPage';
 import Header from '../components/Header';
+
 
 export const history = createHistory();
 
@@ -18,7 +20,8 @@ const AppRouter = () => (
 		<div>
 			<Header />
 			<Switch>
-				<Route path="/" component={HomePage} exact={true} />
+				<Route path="/" component={PortfolioPage} exact={true} />
+				<Route path="/portfolio" component={PortfolioPage} exact={true} />
 				<Route component={PageNotFound} />
 			</Switch>
 		</div>
