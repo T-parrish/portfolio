@@ -9,7 +9,7 @@
     margin-top: $m-size;
     align-items: center;
     z-index: -1;
-    @media(max-width: $mobile-breakpoint) {
+    @media(max-width: $tablet-breakpoint) {
         flex-direction: column;
         position: relative;
     }
@@ -100,4 +100,12 @@
 .project-card__description {
     margin: 0 $m-size $s-size $m-size;
     padding: $l-size $s-size 0px $s-size;
+}
+
+.carousel__container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.carousel--slide {
 }
