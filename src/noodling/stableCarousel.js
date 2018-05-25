@@ -3,8 +3,7 @@ import projects from '../fixtures/projects';
 import { ProjectList } from '../components/ProjectList';
 import { ProjectItem } from '../components/ProjectItem';
 import { Arrow } from '../components/Arrow';
-
-
+import { CSSTransitionGroup } from 'react-transition-group';
 
 export class PortfolioPage extends React.Component {
     constructor(props) {
@@ -12,7 +11,6 @@ export class PortfolioPage extends React.Component {
         this.state = {
             currentImageIndex: 1,
             projects: 3,
-            direction: null,
         };
     
         this.previousSlide = this.previousSlide.bind(this);
@@ -26,9 +24,8 @@ export class PortfolioPage extends React.Component {
         const index =  shouldResetIndex ? lastIndex : currentImageIndex - 1;
 
         this.setState({
-            currentImageIndex: index,
-            direction: 1
-        });
+            currentImageIndex: index
+          });
     }
 
     nextSlide = () => {
@@ -45,16 +42,17 @@ export class PortfolioPage extends React.Component {
 
     render() {
         return (
-            <div className='portfolio__container'> 
+            <div className='carousel__container carousel--slide'> 
                 <Arrow
                     direction="left"
                     clickFunction={ this.previousSlide }
                     glyph="&#9664;" 
                 />
-                <ProjectList 
-                    projects={projects}
-                    mods={this.state}
+                
+                <ProjectItem 
+                    project={projects[this.state.currentImageIndex]}
                 />
+                
                 <Arrow
                     direction="left"
                     clickFunction={ this.nextSlide }
