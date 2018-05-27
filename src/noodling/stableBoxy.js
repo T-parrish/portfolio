@@ -1,20 +1,21 @@
 import React from 'react';
 import Box from '../components/Box';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
-
-const num_boxes = 60;
+const num_boxes = 50;
 
 export class Boxy extends React.Component {
     constructor(props){
         super(props);
         const boxes = Array(num_boxes).fill().map(this.getRandomColor, this);
-        this.state = {
-            boxes,
-            height:0,
-            width:0,
-            boxHeight: 0,
-        };
+        this.state = {boxes};
+        
+        setInterval(() => {
+            const boxes = this.state.boxes.slice();
+            const randIdx = Math.floor(Math.random() * boxes.length);
+            boxes[randIdx] = this.getRandomColor();
+            let opacity = Math.random();
+            this.setState({boxes});
+        }, 500);
     }
 
     getRandomColor() {
@@ -22,34 +23,17 @@ export class Boxy extends React.Component {
         return this.props.allColors[colorIndex];
     }
 
-    componentDidMount() {
-        const height = this.divElement.clientHeight;
-        const width = this.divElement.clientWidth;
-        const boxHeight = height / 5;
-        this.setState({ height, width, boxHeight });
-        this.intervalID = setInterval(() => {
-            const boxes = this.state.boxes.slice();
-            const randIdx = Math.floor(Math.random() * boxes.length);
-            boxes[randIdx] = this.getRandomColor();
-            this.setState({boxes});
-        }, 300);
-    }
-
-    componentWillUnmount() {
-        clearInterval(this.intervalID);
-    }
 
     render() {
         const boxes = this.state.boxes.map((color, idx) => (
             <Box 
                 key={idx}
                 color={color}
-                height={this.state.boxHeight}
             />
         ));
 
         return(
-            <div ref={(divElement) => this.divElement=divElement } className="boxy__container">
+            <div className="boxy__container">
                 {boxes}
             </div>
         );

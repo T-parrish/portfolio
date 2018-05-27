@@ -1,6 +1,7 @@
 .header {
     background: $dark-blue;
     padding: $m-size 0;
+    z-index: 10;
 }
 
 .header__title {

@@ -1,12 +1,10 @@
 import React from 'react';
 
-const Box = ({color, opacity, height}) => {
+const Box = ({color, opacity}) => {
     const style = {
         display: 'inline-block',
         backgroundColor: color,
-        opacity: opacity,
-        height: height,
-        transition: 'background-color .2s ease-in'
+        opacity: opacity
     }
     
     return <div style={style} /> 

@@ -1,10 +1,14 @@
 .form {
     display: flex;
     flex-direction: column;
-    > * {
+    > *, *:focus {
         margin-bottom: $m-size;
+        outline: none;
     }
+
 }
+
+
 
 
 .form__sub {

@@ -11,6 +11,8 @@ import { HomePage } from '../components/HomePage';
 import { PortfolioPage } from '../components/PortfolioPage';
 import Header from '../components/Header';
 import { Boxy } from '../components/Boxy';
+import { Formy } from '../components/Formy';
+import { BlogMain } from '../components/BlogMain';
 
 
 export const history = createHistory();
@@ -23,7 +25,8 @@ const AppRouter = () => (
 			<Switch>
 				<Route path="/" component={HomePage} exact={true} />
 				<Route path="/portfolio" component={PortfolioPage} exact={true} />
-				<Route path="/boxy" component={Boxy} exact={true} />
+				<Route path="/blog" component={BlogMain} exact={true} />
+				<Route path="/formy" component={Formy} exact={true} />
 				<Route component={PageNotFound} />
 			</Switch>
 		</div>
