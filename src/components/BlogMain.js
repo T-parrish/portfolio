@@ -2,6 +2,9 @@ import React from 'react';
 import {BlogItem} from '../components/BlogItem';
 
 // BlogMain -> BlogItem -> BlogPage
+// Need to request data from api with componentWillMount
+// store that data in the state
+// pass the data down
 
 export class BlogMain extends React.Component {
     constructor(props) {
@@ -19,7 +22,7 @@ export class BlogMain extends React.Component {
             }]
         }
     }
-    
+
     render() {
         const blogs = this.state.blogs.map((blog, id) => (
             <BlogItem key={id} content={blog} />

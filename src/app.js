@@ -13,8 +13,7 @@ import LoadingPage from './components/LoadingPage.js';
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
 
-// Initiates firebase connection
-import { firebase } from './firebase/firebase';
+
 
 console.log('app.js is running');
 
@@ -26,26 +25,6 @@ const jsx = (
     </Provider>
 );
 
-let hasRendered = false;
-const renderApp = () => {
-    if (!hasRendered) {
-        ReactDOM.render(jsx, document.getElementById('app'));
-        hasRendered = true;
-    }
-};
+ReactDOM.render(jsx, document.getElementById('app'));
 
-ReactDOM.render(<LoadingPage />, document.getElementById('app'));
-
-firebase.auth().onAuthStateChanged((user) => {
-    if (user) {
-        store.dispatch(login(user.uid));
-        renderApp();
-        if (history.location.pathname === '/') {
-            history.push('/dashboard');
-        }
-    } else {
-        store.dispatch(logout());
-        renderApp();
-        history.push('/');
-    }
-});
+// ReactDOM.render(<LoadingPage />, document.getElementById('app'));

@@ -3,8 +3,7 @@ public/bundle.js
 public/bundle.js.map
 public/styles.css
 public/styles.css.map
-.env.test
-.env.development
+config.json
 public/images/Ghostbg.jpg
 public/images/greenSandsbg.jpg
 public/images/doubledragon.jpg
