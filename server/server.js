@@ -12,7 +12,9 @@ const _ = require('lodash');
 const bodyParser = require('body-parser');
 
 // Database
-const {mongoose} = require('./db/mongoose');
+const { mongoose } = require('./db/mongoose');
+const { Blog } = require('./models/blog');
+const { User } = require('./models/users');
 
 const app = express();
 const publicPath = path.join(__dirname, '..', 'public');
@@ -37,11 +39,18 @@ app.get('/api/blog', (req, res) => {
     }
 });
 
-app.post('/api/blog', (req, res) => {
+app.post('/api/blog', async (req, res) => {
+    let blog = new Blog({
+        title: req.body.title,
+        description: req.body.description,
+        body: req.body.body,
+        author: req.body.author
+    });
     try {
-
+        let doc = await blog.save();
+        res.send(doc);
     } catch (e) {
-        
+        res.status(400).send(e);
     }
 })
 
