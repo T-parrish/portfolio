@@ -1,5 +1,6 @@
 import React from 'react';
-import {FormItem} from '../components/FormItem';
+import { FormItem } from '../components/FormItem';
+import { LoginForm } from '../components/LoginForm';
 
 export class Formy extends React.Component {
     constructor(props) {
@@ -26,6 +27,13 @@ export class Formy extends React.Component {
         this.setState({inputText:'', todos})
     }
 
+    initLogin = (e) => {
+        e.preventDefault();
+        const creds = this.state
+        console.log(this.props)
+        this.props.startUserLogin(creds)
+	};
+
     render () {
         // always remember to implicitly return the components 
         // with the map function... curly braces are a no-no.
@@ -36,6 +44,7 @@ export class Formy extends React.Component {
         return (
             <div className="content-container"> 
                 <h1> Simple Todo App</h1>
+                <LoginForm />
                 <form className="form" onSubmit={this.handleSubmit}>
                     <input 
                         type='text' 

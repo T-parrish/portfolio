@@ -31,9 +31,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(publicPath, 'index.html'));
 });
 
-app.get('/api/blog', (req, res) => {
+app.get('/api/blog', async (req, res) => {
     try {
-        res.json({ message: 'Hello, World!' });
+        let doc = await Blog.find()
+        res.send({doc})
     } catch (e) {
         res.send(e);
     }
@@ -52,7 +53,31 @@ app.post('/api/blog', async (req, res) => {
     } catch (e) {
         res.status(400).send(e);
     }
-})
+});
+
+app.post('/api/users', async (req, res) => {
+    try {
+		var body = _.pick(req.body, ['email', 'password']);
+		var user = new User(body);
+		await user.save();
+		var token = await user.generateAuthToken();
+		res.header('x-auth', token).send(user);
+	} catch (e) {
+		res.status(400).send(e);
+	}
+});
+
+// POST route for user to login / generate new x-auth header token
+app.post('/api/users/login', async (req, res) => {
+	try {
+		var body = _.pick(req.body, ['email', 'password']);
+		var user = await User.findByCredentials(body.email, body.password);
+		var token = await user.generateAuthToken();
+		res.header('x-auth', token).send(user);
+	} catch (e) {
+		res.status(400).send();
+	}
+});
 
 app.listen(port, () => {
     console.log(`Server running on port ${port}`);

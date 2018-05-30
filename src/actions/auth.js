@@ -1,21 +1,39 @@
+// Login / authentication actions
 
-export const login = (uid) => ({
-    type: 'LOGIN',
-    uid
+// initiates the login process
+export const loginUser = (creds) => ({
+    type: LOGIN_REQUEST,
+    isFetching: true,
+    isAuthenticated: false,
+    creds
 });
 
-export const logout = () => ({
-    type: 'LOGOUT'
+
+export const logIn = (user) => ({
+    type: LOGIN_SUCCESS,
+    isFetching: false,
+    isAuthenticated: true,
+    id_token: user.id_token
 });
 
-export const startLogin = () => {
-    return () => {
-        return firebase.auth().signInWithPopup(googleAuthProvider);
-    };
-};
+export const loginError = (message) => ({
+    type: LOGIN_FAILURE,
+    isFetching: false,
+    isAuthenticated: false,
+    message
+});
 
-export const startLogout = () => {
-    return () => {
-        return firebase.auth().signOut();
-    };
-};
+export const startUserLogin = (creds) => {
+
+    let config = {
+        method: 'POST',
+        headers: { 'Content-Type':'application/json'},
+        body: JSON.stringify(creds)
+    }
+
+    return fetch('http://localhost:3000/api/users/login', config)
+        .then((data) => {
+            console.log(data)
+        })
+    
+}

@@ -91,7 +91,6 @@ UserSchema.statics.findByToken = function (token) {
 		
 	}
 
-
 	return User.findOne({
 		'_id': decoded._id,
 		// gets into the nested token field
@@ -122,7 +121,6 @@ UserSchema.statics.findByCredentials = function (email, password) {
 
 UserSchema.pre('save', function (next) {
 	var user = this;
-
 	// only hashes password if the user is changed - stops database from
 	// hashing passwords multiple times and locking people out
 	if (user.isModified('password')) {
@@ -132,7 +130,6 @@ UserSchema.pre('save', function (next) {
 				next();
 			});
 		});
-
 	} else {
 		next();
 	}
