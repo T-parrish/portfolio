@@ -33,7 +33,7 @@ export const startUserLogin = (creds) => {
 
     return fetch('http://localhost:3000/api/users/login', config)
         .then((data) => {
-            console.log(data)
+            console.log(data.headers.token)
         })
     
 }

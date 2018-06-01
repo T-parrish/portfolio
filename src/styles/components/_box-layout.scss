@@ -10,7 +10,7 @@
     text-shadow: (1px 1px 3px $blue-shadow);
     text-align: center;
     padding: $l-size $m-size;
-    position: relative;
+    position: fixed;
     z-index: 3;
     width: 400px;
     color: white;
